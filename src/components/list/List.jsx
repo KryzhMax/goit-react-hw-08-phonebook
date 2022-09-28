@@ -1,13 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import s from "./List.module.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import s from './List.module.css';
 
 export const Filter = ({ contacts, onHandleFilter, onDeleteHandler }) => {
-  const onFinder = (e) => {
+  console.log(contacts);
+  const onFinder = e => {
     onHandleFilter(e.target.value);
   };
 
-  const deleteName = (id) => {
+  const deleteName = id => {
     onDeleteHandler(id);
   };
 

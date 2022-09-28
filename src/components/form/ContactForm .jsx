@@ -1,46 +1,48 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-
-import s from "./ContactForm.module.css";
+// import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addContact, delContact } from '../../redux/contacts/contactsSlice';
+import s from './ContactForm.module.css';
+import { useLocalStorage } from 'hooks/useLocalStorage';
 
 export const ContactForm = ({ callback }) => {
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  const dispatch = useDispatch();
+  const [name, setName] = useLocalStorage('name', '');
+  const [number, setNumber] = useLocalStorage('number', '');
 
-  // static defaultProps = {
-  //   callback: () => {},
-  // };
-
-  // ??????
-  const onFormChange = (e) => {
+  const onFormChange = e => {
     const { name, value } = e.target;
+    // switch (name) {
+    //   case 'name':
+    //     setName(value);
+    //     break;
+    //   case 'number':
+    //     setNumber(value);
+    //     break;
 
-    switch (name) {
-      case "name":
-        setName(value);
-        break;
-      case "number":
-        setNumber(value);
-        break;
+    //   default:
+    //     break;
+    // }
 
-      default:
-        break;
-    }
     // const { name, value } = e.target;
     // this.setState({ [name]: value });
   };
 
-  const onFormSubmit = (evt) => {
+  const onFormSubmit = evt => {
     evt.preventDefault();
-    const form = evt.currentTarget;
-    // ?????????
-    callback({ name, number });
+    const form = evt.target;
+    const { name, number } = form.elements;
+    console.log(form.elements);
+
+    console.log(dispatch(addContact({ name, number })));
+    setName();
+    setNumber();
+    // callback({ name, number });
     form.reset();
-    // console.log(this.state);
   };
   return (
     <>
-      <form className={s.form} title="Name" onSubmit={onFormSubmit}>
+      <form className={s.form} onSubmit={onFormSubmit}>
         <input
           onChange={onFormChange}
           type="text"
