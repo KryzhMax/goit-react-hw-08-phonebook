@@ -8,12 +8,13 @@ import { getFilter } from '../../redux/contacts/selectors';
 
 export const Filter = () => {
   const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const { filter } = useSelector(getFilter);
   const dispatch = useDispatch();
   const filteredContacts = () => {
-    return contacts.filter(item => item.name.toLowerCase().includes(filter));
+    return contacts.filter(item =>
+      item.name.toLowerCase().includes(filter.toLowerCase())
+    );
   };
-  // console.log(filter);
 
   const onFinder = e => {
     dispatch(filterContact(e.target.value));
