@@ -37,6 +37,7 @@ export const ContactForm = () => {
     const form = evt.target;
     if (readyContact(name)) {
       Notify.failure('This contact is already there!');
+      form.reset();
       return;
     }
     dispatch(addContact({ name, number, id: nanoid() }));
