@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { useDispatch, useSelector } from 'react-redux';
-import { filterContact } from '../redux/filter/filterSlice';
-import { addContact, delContact } from '../redux/contacts/contactsSlice';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { filterContact } from '../redux/filter/filterSlice';
+// import { addContact, delContact } from '../redux/contacts/contactsSlice';
 
 import Section from './section/Section';
 import { ContactForm } from './form/ContactForm ';
 import { Filter } from './list/List';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 export const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [contacts, setContacts] = useState(
     JSON.parse(localStorage.getItem('contacts')) || []
   );
@@ -19,12 +18,6 @@ export const App = () => {
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
-
-  const availableContact = name => {
-    return contacts.find(item => {
-      return item.name.toLowerCase() === name.toLowerCase();
-    });
-  };
 
   // const addContact = newContact => {
   //   console.log(newContact);
