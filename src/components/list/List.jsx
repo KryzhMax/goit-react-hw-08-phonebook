@@ -13,7 +13,7 @@ export const Filter = () => {
   const filteredContacts = () => {
     return contacts.filter(item => item.name.toLowerCase().includes(filter));
   };
-  console.log(filter);
+  // console.log(filter);
 
   const onFinder = e => {
     dispatch(filterContact(e.target.value));
