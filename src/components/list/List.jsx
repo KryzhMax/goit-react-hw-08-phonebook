@@ -9,9 +9,13 @@ import { filterContact } from 'redux/filter/filterSlice';
 // { contacts, onHandleFilter, onDeleteHandler }
 export const Filter = () => {
   const contacts = useSelector(getContacts);
+  // const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  console.log(contacts.contacts);
+  // const filteredContacts = () => {
+  //   return contacts.filter(item => item.name.toLowerCase().includes(filter));
+  // };
+  console.log(contacts);
 
   const onFinder = e => {
     // onHandleFilter(e.target.value);
@@ -19,6 +23,7 @@ export const Filter = () => {
   };
 
   const deleteName = id => {
+    // console.log(id);
     // onDeleteHandler(id);
     dispatch(delContact(id));
   };
@@ -30,7 +35,7 @@ export const Filter = () => {
         <input type="text" onChange={onFinder} />
       </form>
       <ul className={s.list}>
-        {contacts.contacts.map(({ id, name, number }) => {
+        {contacts.map(({ id, name, number }) => {
           return (
             <li key={id} className={s.listItem}>
               {name}: {number}

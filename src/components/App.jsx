@@ -41,10 +41,6 @@ export const App = () => {
   //   // setFilter(value.trim());
   // };
 
-  const filteredContacts = () => {
-    return contacts.filter(item => item.name.toLowerCase().includes(filter));
-  };
-
   return (
     <div>
       <Section title="Phonebook">

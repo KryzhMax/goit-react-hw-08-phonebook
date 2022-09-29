@@ -7,6 +7,7 @@ import { addContact } from '../../redux/contacts/contactsSlice';
 import s from './ContactForm.module.css';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import { getContacts } from '../../redux/contacts/selectors';
+import { nanoid } from '@reduxjs/toolkit';
 
 // { callback }
 export const ContactForm = () => {
@@ -48,7 +49,7 @@ export const ContactForm = () => {
   const onFormSubmit = evt => {
     evt.preventDefault();
     // console.log(dispatch(addContact({ name, number })));
-    dispatch(addContact({ name, number }));
+    dispatch(addContact({ name, number, id: nanoid() }));
     setName('');
     setNumber('');
 
