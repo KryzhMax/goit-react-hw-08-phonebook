@@ -13,3 +13,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </PersistGate>
   </Provider>
 );
+// basename = '/goit-react-hw-06-phonebook/';
