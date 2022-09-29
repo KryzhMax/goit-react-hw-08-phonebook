@@ -16,7 +16,7 @@ import { filterReducer } from './filter/filterSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  // whitelist: ['contacts'],
+  blacklist: ['filter'],
 };
 
 const rootReducer = combineReducers({
@@ -25,7 +25,6 @@ const rootReducer = combineReducers({
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
@@ -38,6 +37,7 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
+// __________________
 // export const store = configureStore({
 //   reducer: {
 //     contacts: contactsReducer,

@@ -1,15 +1,17 @@
-import { useDispatch } from 'react-redux';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { useDispatch, useSelector } from 'react-redux';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { addContact } from '../../redux/contacts/contactsSlice';
 import s from './ContactForm.module.css';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import { nanoid } from '@reduxjs/toolkit';
+import { getContacts } from 'redux/contacts/selectors';
 
 export const ContactForm = () => {
   const [name, setName] = useLocalStorage('name', '');
   const [number, setNumber] = useLocalStorage('number', '');
   const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const onFormChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -25,8 +27,18 @@ export const ContactForm = () => {
     }
   };
 
+  const readyContact = name => {
+    return contacts.find(
+      data => data.name.toLowerCase() === name.toLowerCase()
+    );
+  };
+
   const onFormSubmit = evt => {
     evt.preventDefault();
+    if (readyContact(name)) {
+      Notify.failure('This contact is already there!');
+      return;
+    }
     dispatch(addContact({ name, number, id: nanoid() }));
     setName('');
     setNumber('');

@@ -1,21 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { contactsInitState } from './initState';
+
+const initialState = [];
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: contactsInitState,
+  initialState,
   reducers: {
     addContact(state, { payload }) {
       console.log(payload);
       // return [...state, payload];
-      state.contacts.push(payload);
+      state.push(payload);
     },
 
     delContact(state, { payload }) {
       // console.log();
       // return state.contacts.filter(item => item.id !== payload);
-      const idx = state.contacts.findIndex(item => item.id === payload);
-      state.contacts.splice(idx, 1);
+      const idx = state.findIndex(item => item.id === payload);
+      state.splice(idx, 1);
     },
   },
 });

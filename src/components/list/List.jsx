@@ -10,11 +10,9 @@ export const Filter = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-
   const filteredContacts = () => {
     return contacts.filter(item => item.name.toLowerCase().includes(filter));
   };
-  console.log(contacts);
   console.log(filter);
 
   const onFinder = e => {
