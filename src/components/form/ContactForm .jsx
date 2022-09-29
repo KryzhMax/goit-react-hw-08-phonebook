@@ -5,40 +5,36 @@ import { addContact, delContact } from '../../redux/contacts/contactsSlice';
 import s from './ContactForm.module.css';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
-export const ContactForm = ({ callback }) => {
-  const dispatch = useDispatch();
+// { callback }
+export const ContactForm = () => {
   const [name, setName] = useLocalStorage('name', '');
   const [number, setNumber] = useLocalStorage('number', '');
+  const dispatch = useDispatch();
 
-  const onFormChange = e => {
-    const { name, value } = e.target;
-    // switch (name) {
-    //   case 'name':
-    //     setName(value);
-    //     break;
-    //   case 'number':
-    //     setNumber(value);
-    //     break;
+  const onFormChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'number':
+        setNumber(value);
+        break;
 
-    //   default:
-    //     break;
-    // }
-
-    // const { name, value } = e.target;
-    // this.setState({ [name]: value });
+      default:
+        break;
+    }
   };
 
   const onFormSubmit = evt => {
     evt.preventDefault();
     const form = evt.target;
-    const { name, number } = form.elements;
+    // const { name, number } = form.elements;
     console.log(form.elements);
 
     console.log(dispatch(addContact({ name, number })));
-    setName();
-    setNumber();
+    setName('');
+    setNumber('');
     // callback({ name, number });
-    form.reset();
   };
   return (
     <>

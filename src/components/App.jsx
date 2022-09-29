@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { filterContact } from '../redux/filter/filterSlice';
 import { addContact, delContact } from '../redux/contacts/contactsSlice';
 
@@ -26,24 +26,27 @@ export const App = () => {
     });
   };
 
-  const addContact = newContact => {
-    if (availableContact(newContact.name)) {
-      return Notify.failure('This contact already exists');
-    }
-    // setContacts(prev => [...prev, { ...newContact, id: nanoid() }]);
-    dispatch(addContact(newContact));
-  };
+  // const addContact = newContact => {
+  //   console.log(newContact);
+  //   if (availableContact(newContact.name)) {
+  //     return Notify.failure('This contact already exists');
+  //   }
+  //   dispatch(addContact(newContact));
 
-  const onDelete = id => {
-    // setContacts(prev => prev.filter(item => item.id !== id));
-    dispatch(delContact(id));
-  };
+  //   // setContacts(prev => [...prev, { ...newContact, id: nanoid() }]);
+  // };
 
-  const onFilter = value => {
-    dispatch(filterContact(value.trim()));
+  // const onDelete = id => {
+  //   dispatch(delContact(id));
 
-    // setFilter(value.trim());
-  };
+  //   // setContacts(prev => prev.filter(item => item.id !== id));
+  // };
+
+  // const onFilter = value => {
+  //   dispatch(filterContact(value.trim()));
+
+  //   // setFilter(value.trim());
+  // };
 
   const filteredContacts = () => {
     return contacts.filter(item => item.name.toLowerCase().includes(filter));
@@ -52,13 +55,13 @@ export const App = () => {
   return (
     <div>
       <Section title="Phonebook">
-        <ContactForm callback={addContact} />
+        <ContactForm />
       </Section>
       <Section title="Contacts">
         <Filter
-          onHandleFilter={onFilter}
-          contacts={filteredContacts()}
-          onDeleteHandler={onDelete}
+        // onHandleFilter={onFilter}
+        // contacts={filteredContacts()}
+        // onDeleteHandler={onDelete}
         />
       </Section>
     </div>

@@ -18,4 +18,5 @@ export const store = configureStore({
     contacts: contactsReducer,
     filter: filterReducer,
   },
+  // console.log(contactsReducer)
 });

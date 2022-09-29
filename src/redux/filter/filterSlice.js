@@ -9,7 +9,7 @@ const filterSlice = createSlice({
       reducer(state, { payload }) {
         // console.log(payload);
         return state.filter(item =>
-          item.name.toLowerCase().includes(payload.name)
+          item.name.toLowerCase().includes(payload.name.trim())
         );
       },
     },
