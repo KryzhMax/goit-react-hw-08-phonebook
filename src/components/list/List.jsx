@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import s from './List.module.css';
 import { getContacts } from '../../redux/contacts/selectors';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,17 +8,15 @@ import { getFilter } from '../../redux/contacts/selectors';
 export const Filter = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
-  console.log(filter);
-  const [onFilter, setOnFilter] = useState('');
   const dispatch = useDispatch();
+
   const filteredContacts = () => {
     return contacts.filter(({ name }) =>
-      name.toLowerCase().includes(onFilter.toLowerCase())
+      name.toLowerCase().includes(filter.toLowerCase())
     );
   };
 
   const onFinder = e => {
-    setOnFilter(e.target.value);
     dispatch(filterContact(e.target.value));
   };
 
