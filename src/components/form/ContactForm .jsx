@@ -1,16 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { addContact } from '../../redux/contacts/contactsSlice';
-import s from './ContactForm.module.css';
 import { nanoid } from '@reduxjs/toolkit';
-import { getContacts } from 'redux/contacts/selectors';
 import { useState } from 'react';
+import { getContacts } from 'redux/contacts/selectors';
+import {
+  addContact,
+  fetchContacts,
+} from '../../redux/contacts/contactsOperations';
+import s from './ContactForm.module.css';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
+  console.log(fetchContacts());
 
   const onFormChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -40,7 +44,7 @@ export const ContactForm = () => {
       form.reset();
       return;
     }
-    dispatch(addContact({ name, number, id: nanoid() }));
+    dispatch(addContact({ name, number /*id: nanoid()*/ }));
     form.reset();
   };
   return (
