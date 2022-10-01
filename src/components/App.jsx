@@ -1,9 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
-import Section from './section/Section';
+import { Section } from './section/Section';
 import { ContactForm } from './form/ContactForm ';
 import { Filter } from './list/List';
-
-import { fetchContacts } from 'redux/contacts/contactsOperations';
 
 export const App = () => {
   return (

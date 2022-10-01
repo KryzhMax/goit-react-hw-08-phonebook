@@ -1,6 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-
+import { useSelector, useDispatch } from 'react-redux';
 import {
   getContacts,
   getLoading,
@@ -12,6 +11,7 @@ import {
   deleteContact,
   fetchContacts,
 } from '../../redux//contacts/contactsOperations';
+import Spinner from '../Spinner/Spinner';
 import s from './List.module.css';
 
 export const Filter = () => {
@@ -19,12 +19,10 @@ export const Filter = () => {
   const filter = useSelector(getFilter);
   const isLoading = useSelector(getLoading);
   const error = useSelector(getError);
-  // console.log(contacts);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());
-    console.log(isLoading);
   }, [dispatch]);
 
   const filteredContacts = () => {
@@ -48,20 +46,24 @@ export const Filter = () => {
         <input type="text" onChange={onFinder} />
       </form>
       <ul className={s.list}>
-        {filteredContacts().map(({ id, name, phone }) => {
-          return (
-            <li key={id} className={s.listItem}>
-              {name}: {phone}
-              <button
-                className={s.delBtn}
-                type="button"
-                onClick={() => deleteName(id.toString())}
-              >
-                Delete
-              </button>
-            </li>
-          );
-        })}
+        {isLoading && !error && filteredContacts.length === 0 ? (
+          <Spinner />
+        ) : (
+          filteredContacts().map(({ id, name, phone }) => {
+            return (
+              <li key={id} className={s.listItem}>
+                {name}: {phone}
+                <button
+                  className={s.delBtn}
+                  type="button"
+                  onClick={() => deleteName(id)}
+                >
+                  Delete
+                </button>
+              </li>
+            );
+          })
+        )}
       </ul>
     </>
   );
