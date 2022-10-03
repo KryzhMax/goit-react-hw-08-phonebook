@@ -45,25 +45,24 @@ export const Filter = () => {
       <form className={s.finder}>
         <input type="text" onChange={onFinder} />
       </form>
+      {isLoading && !error && <Spinner />}
       <ul className={s.list}>
-        {isLoading && !error && filteredContacts.length === 0 ? (
-          <Spinner />
-        ) : (
-          filteredContacts().map(({ id, name, phone }) => {
-            return (
-              <li key={id} className={s.listItem}>
-                {name}: {phone}
-                <button
-                  className={s.delBtn}
-                  type="button"
-                  onClick={() => deleteName(id)}
-                >
-                  Delete
-                </button>
-              </li>
-            );
-          })
-        )}
+        {filteredContacts().length
+          ? filteredContacts().map(({ id, name, phone }) => {
+              return (
+                <li key={id} className={s.listItem}>
+                  {name}: {phone}
+                  <button
+                    className={s.delBtn}
+                    type="button"
+                    onClick={() => deleteName(id)}
+                  >
+                    Delete
+                  </button>
+                </li>
+              );
+            })
+          : ''}
       </ul>
     </>
   );
