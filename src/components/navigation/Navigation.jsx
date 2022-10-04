@@ -5,6 +5,7 @@ import { LoginForm } from 'components/loginForm/LoginForm';
 import { UserMenu } from 'components/userMenu/UserMenu';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
+import { NavLink } from 'react-router-dom';
 
 export const Navigation = () => {
   const [isRegFormShown, setIsRegFormShown] = useState(false);
@@ -21,20 +22,15 @@ export const Navigation = () => {
 
   return (
     <>
-      <nav>
-        <ul className={s.NavList}>
-          <li>
-            <button type="button" onClick={showRegForm}>
-              Sign Up
-            </button>
-          </li>
-          <li>
-            <button type="button" onClick={showLogForm}>
-              Log In
-            </button>
-          </li>
-        </ul>
-      </nav>
+      <ul className={s.NavList}>
+        <li>
+          <NavLink to="/register" /*onClick={showRegForm}*/>Sign Up</NavLink>
+        </li>
+        <li>
+          <NavLink to="/login" /*onClick={showLogForm}*/>Log In</NavLink>
+        </li>
+      </ul>
+
       {isRegFormShown && <SignUpForm /*callback={closeForm}*/ />}
       {isLogFormShown && <LoginForm /*callback={closeForm}*/ />}
       {/* {isLoggedIn && <UserMenu />} */}

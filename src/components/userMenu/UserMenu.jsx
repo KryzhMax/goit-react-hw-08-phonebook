@@ -1,12 +1,22 @@
 import { useSelector } from 'react-redux';
-import { selectUserName } from 'redux/auth/authSelectors';
+import { NavLink } from 'react-router-dom';
+import { selectToken } from 'redux/auth/authSelectors';
 
 export const UserMenu = () => {
-  const name = useSelector(selectUserName);
+  // const token = useSelector(selectToken);
+
   return (
-    <div>
-      <p>Hello {name}</p>
-      <button>Logout</button>
-    </div>
+    <nav>
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        {/* {token && ( */}
+        <li>
+          <NavLink to="/contacts">Contacts</NavLink>
+        </li>
+        {/* )} */}
+      </ul>
+    </nav>
   );
 };

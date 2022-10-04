@@ -1,12 +1,13 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { login } from '../../redux/auth/authOperations';
 
 export const LoginForm = () => {
-  const [isLogFormShown, setIsLogFormShown] = useState(false);
+  // const [isLogFormShown, setIsLogFormShown] = useState(false);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -18,12 +19,13 @@ export const LoginForm = () => {
     console.log(data);
     dispatch(login(data));
     reset();
+    // navigate('/contacts');
   };
 
-  const closeForm = () => {
-    console.log(isLogFormShown);
-    setIsLogFormShown(false);
-  };
+  // const closeForm = () => {
+  //   console.log(isLogFormShown);
+  //   setIsLogFormShown(false);
+  // };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>
@@ -41,7 +43,7 @@ export const LoginForm = () => {
           <p role="alert">Password is required</p>
         )}
       </label>
-      <button onClick={() => closeForm()}>Log In</button>
+      <button /*onClick={() => closeForm()}*/>Log In</button>
     </form>
   );
 };

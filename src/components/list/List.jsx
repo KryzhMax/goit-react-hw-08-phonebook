@@ -13,12 +13,14 @@ import {
 } from '../../redux//contacts/contactsOperations';
 import Spinner from '../Spinner/Spinner';
 import s from './List.module.css';
+import { selectToken } from 'redux/auth/authSelectors';
 
 export const Filter = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
   const isLoading = useSelector(getLoading);
   const error = useSelector(getError);
+  const token = useSelector(selectToken);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,24 +48,26 @@ export const Filter = () => {
         <input type="text" onChange={onFinder} />
       </form>
       {isLoading && !error && <Spinner />}
-      <ul className={s.list}>
-        {filteredContacts().length
-          ? filteredContacts().map(({ id, name, phone }) => {
-              return (
-                <li key={id} className={s.listItem}>
-                  {name}: {phone}
-                  <button
-                    className={s.delBtn}
-                    type="button"
-                    onClick={() => deleteName(id)}
-                  >
-                    Delete
-                  </button>
-                </li>
-              );
-            })
-          : ''}
-      </ul>
+      {token && (
+        <ul className={s.list}>
+          {filteredContacts().length
+            ? filteredContacts().map(({ id, name, number }) => {
+                return (
+                  <li key={id} className={s.listItem}>
+                    {name}: {number}
+                    <button
+                      className={s.delBtn}
+                      type="button"
+                      onClick={() => deleteName(id)}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                );
+              })
+            : ''}
+        </ul>
+      )}
     </>
   );
 };

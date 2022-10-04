@@ -58,7 +58,7 @@ export const ContactForm = () => {
           onChange={onFormChange}
           type="tel"
           name="number"
-          placeholder="+38(033)-11-22"
+          placeholder="+38033-11-22"
           required
         />
         <button className={s.formButton} type="submit">
