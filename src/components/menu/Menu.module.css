@@ -1,20 +1,32 @@
-.menu {
-  display: flex;
-  align-items: center;
-  gap: 50px;
+@media screen and (min-width: 320px) {
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .text {
+    display: none;
+  }
 }
 
-.text {
-  margin-bottom: 0;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
+@media screen and (min-width: 576px) {
+  .menu {
+    gap: 50px;
+  }
+
+  .text {
+    display: block;
+    margin-bottom: 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+  }
 }
 
 .button {
   min-width: 120px;
   background-color: rgb(2, 57, 79);
-  /* background-color: rgb(39, 185, 248); */
   border: none;
   transition: 150ms linear;
 }

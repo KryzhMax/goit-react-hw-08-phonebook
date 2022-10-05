@@ -1,26 +1,41 @@
-.list {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 15px;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-  overflow: auto;
-  height: 150px;
-  width: 350px;
+@media screen and (min-width: 320px) {
+  .list {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    overflow: auto;
+    height: 50vh;
+    min-width: 260px;
+  }
+
+  .delBtn {
+    min-width: 120px;
+    max-height: 38px;
+  }
+
+  .listItem {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 10px;
+    /* padding-right: 20px; */
+  }
+
+  .listItemText {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 22px;
+  }
+
+  .finder {
+    min-width: 260px;
+  }
 }
 
-.delBtn {
-  min-width: 120px;
-}
-
-.listItem {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding-right: 20px;
-}
-
-.finder {
-  width: 300px;
+@media screen and (min-width: 576px) {
+  .list {
+    width: 300px;
+  }
 }

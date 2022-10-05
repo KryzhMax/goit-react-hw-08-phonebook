@@ -1,23 +1,30 @@
-.form {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
+@media screen and (min-width: 320px) {
+  .form {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .formButton {
+    min-width: 120px;
+    background-color: rgba(4, 98, 136, 0.634);
+    border: none;
+    transition: 150ms linear;
+  }
+
+  .formButton:hover {
+    background-color: rgba(2, 57, 79, 0.634);
+    box-shadow: 0px 2px 8px -3px rgba(0, 0, 0, 0.54);
+  }
+
+  .formInput {
+    width: 260px;
+  }
 }
 
-.formButton {
-  min-width: 120px;
-  background-color: rgba(4, 98, 136, 0.634);
-  border: none;
-  transition: 150ms linear;
-}
-
-.formButton:hover {
-  background-color: rgba(2, 57, 79, 0.634);
-  box-shadow: 0px 2px 8px -3px rgba(0, 0, 0, 0.54);
-}
-
-.formInput {
-  width: 300px;
+@media screen and(min-width: 576px) {
+  .formInput {
+    width: 300px;
+  }
 }

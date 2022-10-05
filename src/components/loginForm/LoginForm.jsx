@@ -1,13 +1,15 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
 import { login } from '../../redux/auth/authOperations';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import s from './LoginForm.module.css';
 
 export const LoginForm = () => {
-  // const [isLogFormShown, setIsLogFormShown] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -15,34 +17,43 @@ export const LoginForm = () => {
     reset,
   } = useForm();
 
-  const onSubmit = data => {
-    console.log(data);
-    dispatch(login(data));
+  const onSubmit = () => {
+    console.log({ email, password });
+    dispatch(login({ email, password }));
     reset();
   };
 
-  // const closeForm = () => {
-  //   console.log(isLogFormShown);
-  //   setIsLogFormShown(false);
-  // };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>
+    <Form.Group>
+      <Form.Label>
         Your Email:
-        <input
+        <Form.Control
+          className={s.loginInput}
+          onInput={e => setEmail(e.target.value)}
           {...register('email', { required: 'Email Address is required' })}
           aria-invalid={errors.email ? 'true' : 'false'}
         />
         {errors.email && <p role="alert">{errors.email?.message}</p>}
-      </label>
-      <label>
+      </Form.Label>
+      <Form.Label>
         Your Password:
-        <input type="password" {...register('password', { required: true })} />
+        <Form.Control
+          className={s.loginInput}
+          onInput={e => setPassword(e.target.value)}
+          type="password"
+          {...register('password', { required: true })}
+        />
         {errors.password?.type === 'required' && (
           <p role="alert">Password is required</p>
         )}
-      </label>
-      <button /*onClick={() => closeForm()}*/>Log In</button>
-    </form>
+      </Form.Label>
+      <Button
+        className={s.loginBtn}
+        type="submit"
+        onClick={handleSubmit(onSubmit)}
+      >
+        Log In
+      </Button>
+    </Form.Group>
   );
 };

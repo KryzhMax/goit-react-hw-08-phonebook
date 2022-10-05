@@ -56,7 +56,9 @@ export const Filter = () => {
             ? filteredContacts().map(({ id, name, number }) => {
                 return (
                   <li key={id} className={s.listItem}>
-                    {name}: {number}
+                    <span className={s.listItemText}>
+                      {name}: {number}
+                    </span>
                     <Button
                       variant="secondary"
                       className={s.delBtn}

@@ -1,0 +1,14 @@
+@media screen and (min-width: 320px) {
+  .loginInput {
+    width: 240px;
+  }
+}
+@media screen and (min-width: 478px) {
+  .loginInput {
+    width: 320px;
+  }
+}
+
+.loginBtn {
+  min-width: 120px;
+}

@@ -1,20 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
-import { Section } from './section/Section';
-import { ContactForm } from './form/ContactForm ';
-import { Filter } from './list/List';
-import { Navigation } from './navigation/Navigation';
 import Layout from './layout/Layout';
 import { useDispatch } from 'react-redux';
-import { SignUpForm } from './signUpForm/SignUpForm';
-import { LoginForm } from './loginForm/LoginForm';
 import ContactFormPage from 'pages/contactFormPage/ContactFormPage';
 import HomePage from 'pages/homePage/HomePage';
 import PrivateRoute from 'Routes/PrivateRoute';
 import PublicRoute from 'Routes/PublicRoute';
 import { useEffect } from 'react';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
-// import AppBar from './appBar/AppBar';
-// import { UserMenu } from './userMenu/UserMenu';
+import NotFound from 'pages/notFound/NotFound';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -38,17 +31,13 @@ export const App = () => {
           <Route
             path="/register"
             element={
-              <PublicRoute restricted>
-                <SignUpForm />
-              </PublicRoute>
+              <PublicRoute restricted>{/* <SignUpForm /> */}</PublicRoute>
             }
           />
           <Route
             path="/login"
             element={
-              <PublicRoute restricted>
-                <LoginForm />
-              </PublicRoute>
+              <PublicRoute restricted>{/* <LoginForm /> */}</PublicRoute>
             }
           />
           <Route
@@ -59,6 +48,7 @@ export const App = () => {
               </PrivateRoute>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </>

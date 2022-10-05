@@ -28,3 +28,9 @@
   color: rgb(39, 185, 248);
   transition: 150ms linear;
 }
+
+@media screen and (max-width: 768px) {
+  .userMenuList {
+    gap: 15px;
+  }
+}

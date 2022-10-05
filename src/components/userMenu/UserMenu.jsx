@@ -10,11 +10,13 @@ export const UserMenu = () => {
   return (
     <nav className={s.nav}>
       <ul className={s.userMenuList}>
-        <li className={s.userMenuItem}>
-          <NavLink className={s.navLink} to="/">
-            Home
-          </NavLink>
-        </li>
+        {!token && (
+          <li className={s.userMenuItem}>
+            <NavLink className={s.navLink} to="/">
+              Home
+            </NavLink>
+          </li>
+        )}
         {token && (
           <li>
             <NavLink className={s.navLink} to="/contacts">

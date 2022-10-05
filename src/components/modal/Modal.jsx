@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
+import s from './Modal.module.css';
 const ModalWindow = ({ title = '', children = '' }) => {
   const [show, setShow] = useState(false);
 
@@ -14,15 +14,7 @@ const ModalWindow = ({ title = '', children = '' }) => {
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{children}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
+        <Modal.Body className={s.modalBody}>{children}</Modal.Body>
       </Modal>
 
       <Button variant="primary" onClick={handleShow}>
