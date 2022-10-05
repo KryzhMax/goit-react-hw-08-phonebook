@@ -17,7 +17,6 @@ export const register = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/signup', user);
-      console.log(data);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -30,7 +29,6 @@ export const login = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/login', user);
-      console.log(data);
       token.set(data.token);
       return data;
     } catch (error) {

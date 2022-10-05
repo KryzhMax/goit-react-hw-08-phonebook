@@ -18,7 +18,6 @@ export const LoginForm = () => {
   } = useForm();
 
   const onSubmit = () => {
-    console.log({ email, password });
     dispatch(login({ email, password }));
     reset();
   };

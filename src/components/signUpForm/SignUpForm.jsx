@@ -21,7 +21,6 @@ export const SignUpForm = () => {
   } = useForm();
 
   const onSubmit = () => {
-    console.log({ email, password, name });
     dispatch(authRegister({ email, password, name }));
     reset();
   };

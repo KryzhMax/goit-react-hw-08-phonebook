@@ -1,6 +1,7 @@
 @media screen and (min-width: 320px) {
   .wrapper {
-    position: relative;
+    position: fixed;
+    width: 100vw;
     display: flex;
     justify-content: space-between;
 
@@ -12,4 +13,3 @@
     border-bottom-right-radius: 10px;
   }
 }
-/* saddas */
