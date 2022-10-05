@@ -1,5 +1,4 @@
 import Menu from 'components/menu/Menu';
-import ModalWindow from 'components/modal/Modal';
 import { Navigation } from 'components/navigation/Navigation';
 import { UserMenu } from 'components/userMenu/UserMenu';
 import React from 'react';
