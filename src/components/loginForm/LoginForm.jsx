@@ -7,7 +7,7 @@ import { login } from '../../redux/auth/authOperations';
 export const LoginForm = () => {
   // const [isLogFormShown, setIsLogFormShown] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -19,7 +19,6 @@ export const LoginForm = () => {
     console.log(data);
     dispatch(login(data));
     reset();
-    // navigate('/contacts');
   };
 
   // const closeForm = () => {

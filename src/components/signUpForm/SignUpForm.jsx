@@ -25,33 +25,38 @@ export const SignUpForm = () => {
     setIsFormShown(false);
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>
-        Your Name:
-        <input
-          {...register('name', { required: true })}
-          aria-invalid={errors.name ? 'true' : 'false'}
-        />
-        {errors.name?.type === 'required' && (
-          <p role="alert">Name is required</p>
-        )}
-      </label>
-      <label>
-        Your Email:
-        <input
-          {...register('email', { required: 'Email Address is required' })}
-          aria-invalid={errors.email ? 'true' : 'false'}
-        />
-        {errors.email && <p role="alert">{errors.email?.message}</p>}
-      </label>
-      <label>
-        Your Password:
-        <input type="password" {...register('password', { required: true })} />
-        {errors.password?.type === 'required' && (
-          <p role="alert">Password is required</p>
-        )}
-      </label>
-      <button onClick={() => closeForm()}>Register</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label>
+          Your Name:
+          <input
+            {...register('name', { required: true })}
+            aria-invalid={errors.name ? 'true' : 'false'}
+          />
+          {errors.name?.type === 'required' && (
+            <p role="alert">Name is required</p>
+          )}
+        </label>
+        <label>
+          Your Email:
+          <input
+            {...register('email', { required: 'Email Address is required' })}
+            aria-invalid={errors.email ? 'true' : 'false'}
+          />
+          {errors.email && <p role="alert">{errors.email?.message}</p>}
+        </label>
+        <label>
+          Your Password:
+          <input
+            type="password"
+            {...register('password', { required: true })}
+          />
+          {errors.password?.type === 'required' && (
+            <p role="alert">Password is required</p>
+          )}
+        </label>
+        <button onClick={() => closeForm()}>Register</button>
+      </form>
+    </>
   );
 };

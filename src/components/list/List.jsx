@@ -12,8 +12,10 @@ import {
   fetchContacts,
 } from '../../redux//contacts/contactsOperations';
 import Spinner from '../Spinner/Spinner';
-import s from './List.module.css';
 import { selectToken } from 'redux/auth/authSelectors';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import s from './List.module.css';
 
 export const Filter = () => {
   const contacts = useSelector(getContacts);
@@ -44,9 +46,9 @@ export const Filter = () => {
   return (
     <>
       <h3>Find contact by name</h3>
-      <form className={s.finder}>
-        <input type="text" onChange={onFinder} />
-      </form>
+      <Form className={s.finder}>
+        <Form.Control type="text" onChange={onFinder} />
+      </Form>
       {isLoading && !error && <Spinner />}
       {token && (
         <ul className={s.list}>
@@ -55,13 +57,14 @@ export const Filter = () => {
                 return (
                   <li key={id} className={s.listItem}>
                     {name}: {number}
-                    <button
+                    <Button
+                      variant="secondary"
                       className={s.delBtn}
                       type="button"
                       onClick={() => deleteName(id)}
                     >
-                      Delete
-                    </button>
+                      <b>Delete</b>
+                    </Button>
                   </li>
                 );
               })

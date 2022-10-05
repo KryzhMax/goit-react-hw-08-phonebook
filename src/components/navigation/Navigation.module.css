@@ -1,4 +1,10 @@
-.NavList {
+.navList {
   display: flex;
   list-style: none;
+}
+
+.navLink {
+  text-decoration: none;
+  color: orange;
+  padding: 20px 8px;
 }

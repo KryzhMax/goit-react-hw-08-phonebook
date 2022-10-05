@@ -1,0 +1,11 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  background-color: rgba(22, 17, 0, 0.627);
+  box-shadow: 0px 5px 13px -3px rgba(0, 0, 0, 0.54);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

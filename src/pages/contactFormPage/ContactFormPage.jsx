@@ -2,17 +2,20 @@
 import { ContactForm } from 'components/form/ContactForm ';
 import { Filter } from 'components/list/List';
 import { Section } from 'components/section/Section';
+import s from './ContactFormPage.module.css';
 
 const ContactFormPage = () => {
   return (
-    <>
-      <Section title="Phonebook">
-        <ContactForm />
-      </Section>
-      <Section title="Contacts">
-        <Filter />
-      </Section>
-    </>
+    <main>
+      <div className={s.wrapper}>
+        <Section title="Phonebook">
+          <ContactForm />
+        </Section>
+        <Section title="Contacts">
+          <Filter />
+        </Section>
+      </div>
+    </main>
   );
 };
 
