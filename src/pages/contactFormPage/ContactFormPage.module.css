@@ -17,6 +17,7 @@
 
 @media screen and (min-width: 320px) {
   .wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 15px;
